@@ -1,0 +1,6 @@
+//Criar o projeto
+go mod init github.com/jeftavares/web-app-go
+
+//Driver de conexão com o postgres (Doc: https://pkg.go.dev/github.com/lib/pq#section-readme)
+//Outros drivers de conexão (https://github.com/golang/go/wiki/SQLDrivers)
+go get github.com/lib/pq
