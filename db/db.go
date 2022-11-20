@@ -12,7 +12,7 @@ func ConectaComBancoDeDados() *sql.DB {
 	//teste - a abertura sera feita nas proprias função que faz a chamadas
 	//db := conectaComBancoDeDados() /*Abre a conexão com o banco */
 	//defer db.Close()
-	conexao := "user=jeftavares dbname=loja password=123456 host=localhost sslmode=disable"
+	conexao := "user=postgres dbname=loja password=postgres host=localhost sslmode=disable"
 	db, err := sql.Open("postgres", conexao)
 	if err != nil {
 		panic(err.Error())
