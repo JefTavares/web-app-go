@@ -1,0 +1,32 @@
+version: "3.5"
+
+services:
+  postgres-compose:
+    #nome do container, necessario para dar um endereço ao cantainer.
+    #por exemplo, lá no pgadmin o Host Name/addres vai ser postgres_jeftavares
+    container_name: postgres_loja_go
+    image: postgres
+    environment:
+      POSTGRES_USERNAME: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./PGData:/var/lib/postgresql/data
+    networks:
+      - postgres-compose-network
+
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "postgres@email.com"
+      PGADMIN_DEFAULT_PASSWORD: "postgres"
+    ports:
+      - "15432:80"
+    depends_on:
+      - postgres-compose
+    networks:
+      - postgres-compose-network
+
+networks:
+  postgres-compose-network: #dicas uteis: https://velog.io/@wlyu1208/How-to-Run-PostgreSQL-and-pgAdmin-Using-Dockerfeat.-Docker-Engine-Docker-Compose-V2
